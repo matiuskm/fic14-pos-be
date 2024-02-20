@@ -1,6 +1,6 @@
 @foreach ($categories as $category)
     <tr>
-        <td><img class="img-rounded" height="55" src="{{ $category->getImage() }}" title="{{ $category->name }}"></td>
+        <td><img class="img-rounded" height="55" src="{{ $category->image }}" title="{{ $category->name }}"></td>
         <td class="text-nowrap">{{ $category->name }}</td>
         <td>{{ $category->description }}</td>
         <td><span class="d-flex">

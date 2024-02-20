@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -22,8 +23,10 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function getImage(): string
+    protected function image(): Attribute
     {
-        return $this->image ? Storage::disk('s3')->url('categories/' . $this->image) : 'https://via.placeholder.com/1200x600.png?text=No+Image';
+        return Attribute::make(
+            get: fn (string $value) => $value ? Storage::disk('s3')->url('categories/' . $value) : 'https://via.placeholder.com/55x55.png?text=No+Image',
+        );
     }
 }

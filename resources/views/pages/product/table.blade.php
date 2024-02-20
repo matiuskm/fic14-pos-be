@@ -1,6 +1,6 @@
 @foreach ($products as $product)
     <tr>
-        <td><img class="img-rounded" height="55" src="{{ $product->getImage() }}" title="{{ $product->name }}"></td>
+        <td><img class="img-rounded" height="55" src="{{ $product->image }}" title="{{ $product->name }}"></td>
         <td class="text-nowrap">{{ $product->name }}</td>
         <td>{{ $product->category->name }}</td>
         <td>Rp {{ number_format($product->price, 0, ',', '.') }}</td>

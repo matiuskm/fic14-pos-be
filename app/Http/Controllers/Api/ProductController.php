@@ -10,11 +10,7 @@ class ProductController extends Controller
 {
     public function index(): JsonResponse
     {
-        $products = \App\Models\Product::all();
-
-        foreach ($products as $product) {
-            $product->image = $product->getImage();
-        }
+        $products = \App\Models\Product::with('category')->get();
 
         return response()->json([
             'status' => "success",

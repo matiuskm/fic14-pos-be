@@ -11,9 +11,7 @@ class CategoryController extends Controller
     public function index(): JsonResponse
     {
         $categories = \App\Models\Category::all();
-        foreach ($categories as $category) {
-            $category->image = $category->getImage();
-        }
+
         return response()->json([
             'status' => "success",
             'message' => 'Category list',
